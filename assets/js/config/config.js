@@ -25,8 +25,8 @@ App.Config = {
   },
 
   contacto: {
-    whatsapp: "525655175932",        // lada de país + número, sin + ni espacios
-    telefonoVisible: "951 190 14 99",
+    whatsapp: "525655175932",
+  telefono: "9511901499",
     mensaje: "¡Hola! Somos los invitados y confirmamos nuestra asistencia a la celebración del Niño Dios, nos vemos el 24 de diciembre Fam. Vera Lazaro. ¡Gracias por la invitación!"
   },
 
