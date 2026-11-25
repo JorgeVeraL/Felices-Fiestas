@@ -1199,3 +1199,74 @@ h3{font-family:var(--f-serif);font-style:italic;font-weight:600;font-size:clamp(
     font-size: 19px;
   }
 }
+
+/* ==========================================
+   PREXEL / INVITACIÓN NAVIDEÑA
+   OPTIMIZACIÓN GENERAL PARA MÓVILES
+========================================== */
+
+@media (max-width: 768px) {
+
+  /* Evitar filtros costosos */
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Reducir sombras muy pesadas */
+  * {
+    text-shadow: none;
+  }
+
+  /* Evitar fondos fijos que provocan tirones */
+  html,
+  body {
+    background-attachment: scroll !important;
+  }
+
+  /* Desactivar animaciones decorativas */
+  .reveal,
+  .reveal *,
+  .sky *,
+  .foil,
+  .wave,
+  .snow,
+  .burrito {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Reducir efectos de desenfoque */
+  [class*="glow"],
+  [class*="blur"],
+  [class*="light"] {
+    filter: none !important;
+  }
+
+  /* Evitar sombras excesivas en tarjetas */
+  .block,
+  .frame,
+  .card,
+  .itinerary-item {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  /* Mantener desplazamiento fluido */
+  body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Preferencia del usuario: menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
