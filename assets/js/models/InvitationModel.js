@@ -1,3 +1,4 @@
+
 /* MODELO — datos y reglas de la invitación (sin tocar el DOM) */
 window.App = window.App || {};
 
@@ -15,30 +16,41 @@ App.InvitationModel.prototype = {
     var evento = new Date(+partes[0], +partes[1] - 1, +partes[2]);
     var hoy = new Date();
     hoy = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+
     return Math.round((evento - hoy) / 86400000);
   },
 
   textoCuentaRegresiva: function () {
     var d = this.diasRestantes();
+
     if (d > 1) return "Faltan " + d + " días";
     if (d === 1) return "¡Es mañana!";
     if (d === 0) return "¡Es hoy!";
+
     return "";
   },
 
+  /* Confirmación mediante WhatsApp */
   urlWhatsApp: function () {
-    return "https://wa.me/" + this.c.contacto.whatsapp + "?text=" + encodeURIComponent(this.c.contacto.mensaje);
+    return "https://wa.me/" +
+      this.c.contacto.whatsapp +
+      "?text=" +
+      encodeURIComponent(this.c.contacto.mensaje);
   },
 
+  /* Llamada telefónica: utiliza un número independiente */
   urlLlamada: function () {
-    return "tel:+" + this.c.contacto.whatsapp;
+    return "tel:" + this.c.contacto.telefono;
   },
 
   urlGoogleMaps: function () {
-    return "https://www.google.com/maps/dir/?api=1&destination=" + this.c.lugar.lat + "," + this.c.lugar.lng;
+    return "https://www.google.com/maps/dir/?api=1&destination=" +
+      this.c.lugar.lat + "," + this.c.lugar.lng;
   },
 
   urlWaze: function () {
-    return "https://waze.com/ul?ll=" + this.c.lugar.lat + "," + this.c.lugar.lng + "&navigate=yes";
+    return "https://waze.com/ul?ll=" +
+      this.c.lugar.lat + "," + this.c.lugar.lng +
+      "&navigate=yes";
   }
 };
