@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Invitación · Padrinos del Niño Dios</title>
+  <meta name="description" content="Invitación a la fiesta de los padrinos del Niño Dios en San Andrés Zautla.">
+  <meta name="theme-color" content="#06201A">
+  <link rel="icon" href="assets/img/estrella.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <div class="sky" id="sky" aria-hidden="true"></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <!-- ============ Puertas de entrada ============ -->
+  <div class="gate" id="gate">
+    <div class="gate-content">
+      <p class="gate-small">Tienes una invitación</p>
+      <h1 class="gate-title foil" data-bind="titulo">Padrinos del Niño Dios</h1>
+      <div class="wreath">
+        <img src="assets/img/corona.svg" alt="" class="wreath-img">
+        <button class="seal" id="btn-open" type="button" aria-label="Abrir invitación">
+          <img src="assets/img/estrella.svg" alt="">
+        </button>
+      </div>
+      <p class="gate-note">Toca el sello para abrir<br><span>Se escucha mejor con el sonido activado</span></p>
+    </div>
+  </div>
+
+  <button class="music" id="btn-music" type="button" aria-pressed="false" aria-label="Activar música">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9 3v11.2A3.5 3.5 0 1 0 11 17V7.6l8-1.6v6.2A3.5 3.5 0 1 0 21 15V3z"/></svg>
+    <span class="music-off" aria-hidden="true"></span>
+  </button>
+
+  <!-- ============ Burrito sabanero (camina con el scroll) ============ -->
+  <div class="burro-track" id="burro-track">
+    <div class="burro" id="burro" role="button" tabindex="0" aria-label="Burrito sabanero con el Niño Dios. Tócalo para escucharlo">
+      <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
+      <div class="burro-bob">
+        <div class="burro-flip">
+          <svg viewBox="0 0 300 232" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <radialGradient id="bGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFEFB0" stop-opacity=".95"/><stop offset="1" stop-color="#FFEFB0" stop-opacity="0"/></radialGradient>
+              <linearGradient id="bBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9A086"/><stop offset="1" stop-color="#8C7560"/></linearGradient>
+              <linearGradient id="bWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A56A36"/><stop offset="1" stop-color="#5B3516"/></linearGradient>
+            </defs>
+            <ellipse cx="135" cy="210" rx="92" ry="9" fill="#000" opacity=".3"/>
+            <!-- cola -->
+            <g class="tail"><path d="M62 112 C44 118 38 142 44 160" stroke="#5B4636" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="44" cy="166" rx="8" ry="14" fill="#3E2F24" transform="rotate(8 44 166)"/></g>
+            <!-- patas lejanas -->
+            <g class="leg b"><rect x="104" y="136" width="14" height="62" rx="6" fill="#74604D"/><rect x="102" y="192" width="18" height="11" rx="4" fill="#2E241C"/></g>
+            <g class="leg a"><rect x="170" y="136" width="14" height="62" rx="6" fill="#74604D"/><rect x="168" y="192" width="18" height="11" rx="4" fill="#2E241C"/></g>
+            <!-- cuerpo -->
+            <ellipse cx="125" cy="122" rx="74" ry="40" fill="url(#bBody)"/>
+            <ellipse cx="125" cy="142" rx="60" ry="19" fill="#E8D8BE" opacity=".75"/>
+            <!-- cuello -->
+            <path d="M158 100 C170 80 184 62 198 52 L226 74 C212 92 202 112 190 134 Z" fill="url(#bBody)"/>
+            <!-- patas cercanas -->
+            <g class="leg a"><rect x="76" y="138" width="15" height="62" rx="6" fill="#9A8269"/><rect x="74" y="192" width="19" height="11" rx="4" fill="#2E241C"/></g>
+            <g class="leg b"><rect x="146" y="138" width="15" height="62" rx="6" fill="#9A8269"/><rect x="144" y="192" width="19" height="11" rx="4" fill="#2E241C"/></g>
+            <!-- sarape -->
+            <path d="M82 90 Q126 76 170 90 L174 130 Q126 144 78 130 Z" fill="#B3202E"/>
+            <path d="M80 103 Q126 91 172 103" stroke="#F6E2A4" stroke-width="4" fill="none"/>
+            <path d="M79 113 Q126 101 173 113" stroke="#1F7A57" stroke-width="4" fill="none"/>
+            <path d="M78 122 Q126 110 175 122" stroke="#F6E2A4" stroke-width="2.5" fill="none"/>
+            <path d="M78 133 Q126 147 175 133" stroke="#F6E2A4" stroke-width="6" fill="none" stroke-dasharray="2 3"/>
+            <!-- Niño Dios en su cuna -->
+            <circle cx="126" cy="54" r="48" fill="url(#bGlow)" class="aura"/>
+            <path d="M92 78 Q126 68 160 78 L154 95 Q126 103 98 95 Z" fill="url(#bWood)"/>
+            <ellipse cx="126" cy="78" rx="34" ry="7" fill="#EBC15B"/>
+            <path d="M106 80 Q108 69 126 69 Q144 69 146 80 Q126 88 106 80Z" fill="#FFF6E2"/>
+            <path d="M106 82 Q126 90 146 82 L145 88 Q126 96 107 88Z" fill="#3E73BA"/>
+            <circle cx="126" cy="58" r="15.5" fill="#FFF6E2"/>
+            <circle cx="126" cy="59" r="11.5" fill="#F4CBA2"/>
+            <path d="M120 58 q2.5 2.4 5 0 M127.5 58 q2.5 2.4 5 0" stroke="#5A3520" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M123 64 q3 2.6 6 0" stroke="#B4574A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <ellipse class="halo" cx="126" cy="41" rx="17" ry="4.6" fill="none" stroke="#FFD04D" stroke-width="3"/>
+            <!-- cabeza -->
+            <g class="head">
+              <g class="ear back"><ellipse cx="208" cy="36" rx="7" ry="21" fill="#74604D" transform="rotate(-6 208 36)"/></g>
+              <ellipse cx="219" cy="70" rx="28" ry="19" fill="url(#bBody)" transform="rotate(38 219 70)"/>
+              <g class="ear front"><ellipse cx="196" cy="40" rx="8" ry="22" fill="#A58C73" transform="rotate(-24 196 40)"/><ellipse cx="196" cy="42" rx="3.8" ry="15" fill="#E7A9A0" transform="rotate(-24 196 42)"/></g>
+              <path d="M190 52 C186 70 176 86 164 102 L172 106 C184 92 194 76 200 58 Z" fill="#4A382B"/>
+              <path d="M205 48 Q217 50 215 66 Q206 60 204 50Z" fill="#4A382B"/>
+              <ellipse cx="240" cy="92" rx="16" ry="12" fill="#EADBC3" transform="rotate(30 240 92)"/>
+              <ellipse cx="247" cy="93" rx="2.6" ry="3.6" fill="#3A2A1F"/>
+              <path d="M236 100 q6 3 12 -1" stroke="#7A5A44" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M226 78 Q238 86 247 82" stroke="#B3202E" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <circle cx="219" cy="70" r="4.4" fill="#2A1A10"/><circle cx="220.4" cy="68.6" r="1.4" fill="#fff"/>
+            </g>
+            <!-- collar y campana -->
+            <path d="M172 106 Q188 124 202 108" stroke="#B3202E" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <g class="bell"><circle cx="188" cy="124" r="6.5" fill="#F4C54F" stroke="#9A6E14" stroke-width="1.5"/><path d="M185 128 h6" stroke="#9A6E14" stroke-width="1.5"/></g>
+            <!-- estrellita guía -->
+            <g class="guide"><circle cx="268" cy="30" r="22" fill="url(#bGlow)"/><polygon points="268,17 272,27 283,28 275,35 277,46 268,40 259,46 261,35 253,28 264,27" fill="#FFE27A" stroke="#FFF7C7" stroke-width="1.2"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="app">
+    <!-- ============ Portada ============ -->
+    <header class="hero">
+      <div class="garland" aria-hidden="true"><img src="assets/img/guirnalda.svg" alt=""></div>
+      <img class="hang h1" src="assets/img/bola.svg" alt="">
+      <img class="hang h2" src="assets/img/estrella.svg" alt="">
+      <img class="hang h3" src="assets/img/campana.svg" alt="">
+      <img class="hang h4" src="assets/img/bola.svg" alt="">
+
+      <p class="kicker">Padrinos del Niño Dios</p>
+      <h2 class="hero-title">
+        <span class="line">Los padrinos</span>
+        <span class="family foil" data-bind="familia">Fam. Vera Lazaro</span>
+        <span class="line" data-bind="saludo">les deseamos felices fiestas</span>
+      </h2>
+      <div class="arch">
+        <img class="hero-img" src="assets/img/nino-dios.svg" alt="El Niño Dios en su cuna">
+      </div>
+      <p class="scroll-hint" aria-hidden="true">Desliza y acompaña al burrito</p>
+    </header>
+
+    <!-- ============ Agradecimiento ============ -->
+    <section class="block reveal">
+      <img class="divider" src="assets/img/acebo.svg" alt="">
+      <p class="thanks" data-bind="agradecimiento">Gracias por acompañarnos a celebrar la llegada del Niño Jesús</p>
+    </section>
+
+    
+<!-- ============ Fecha e itinerario ============ -->
+<section class="block reveal itinerary">
+  <div class="itinerary-heading">
+    <p class="itinerary-month" data-bind="mes">Diciembre</p>
+    <h2 class="itinerary-day foil" data-bind="dia">24</h2>
+    <p class="itinerary-year" data-bind="ciclo">2026-2027</p>
+  </div>
+
+  <div class="itinerary-list">
+    <div class="itinerary-item">
+      <div class="itinerary-time">
+        <span class="itinerary-hour">4:00</span>
+        <span class="itinerary-period">PM</span>
+      </div>
+      <div class="itinerary-detail">
+        <span class="itinerary-icon">✦</span>
+        <div>
+          <h3>Santa Misa</h3>
+          <p>Celebración en honor al Niño Dios</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="itinerary-item">
+      <div class="itinerary-time">
+        <span class="itinerary-hour">7:00</span>
+        <span class="itinerary-period">PM</span>
+      </div>
+      <div class="itinerary-detail">
+        <span class="itinerary-icon">✧</span>
+        <div>
+          <h3>Posada</h3>
+          <p>Los esperamos para compartir esta hermosa tradición</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="countdown" id="countdown" hidden></p>
+</section>
+
+
+    <!-- ============ Reyes Magos ============ -->
+    <section class="block reyes reveal">
+      <h3 class="foil">Que la estrella guíe su camino</h3>
+      <div class="reyes-frame"><img class="reyes-img" src="assets/img/reyes-magos.svg" alt="Los tres Reyes Magos con sus regalos"></div>
+    </section>
+
+    <!-- ============ Mensaje del anfitrión (opcional) ============ -->
+    <section class="block host reveal" id="host">
+      <div class="frame">
+        <h3 class="foil" data-bind="anfTitulo">Un mensaje para ustedes</h3>
+        <button class="play" id="btn-host" type="button" aria-pressed="false" aria-label="Escuchar mensaje">
+          <span class="play-icon" aria-hidden="true"></span>
+        </button>
+        <div class="host-wish">
+  <div class="frost-frame">
+<!-- Onda de audio -->
+<div class="wave" aria-hidden="true">
+  <i></i><i></i><i></i><i></i><i></i>
+  <i></i><i></i><i></i>
+</div>
+
+<p class="play-label" id="host-label">
+  Escuchar mensaje
+</p>
+
+<!-- Contenedor vacío; no mostrará frases del burrito -->
+<div class="lines" id="host-lines" hidden></div>
+
+<audio id="host-audio" preload="metadata"></audio>
+    <!-- Corona navideña -->
+    <div class="christmas-wreath" aria-hidden="true">
+      <div class="wreath-ring"></div>
+
+      <!-- Hojas de la corona -->
+      <div class="wreath-leaves"></div>
+
+      <!-- Nochebuena superior -->
+      <div class="poinsettia flower-top">
+        <span class="petals petals-back"></span>
+        <span class="petals petals-front"></span>
+        <span class="flower-center"></span>
+      </div>
+
+      <!-- Nochebuena inferior -->
+      <div class="poinsettia flower-bottom">
+        <span class="petals petals-back"></span>
+        <span class="petals petals-front"></span>
+        <span class="flower-center"></span>
+      </div>
+
+      <!-- Moño -->
+      <div class="wreath-bow">
+        <span></span>
+        <span></span>
+        <i></i>
+      </div>
+    </div>
+
+    <div class="wish-content">
+      <span class="wish-small">Con todo nuestro cariño</span>
+
+      <p>
+        Les deseamos una Navidad llena de
+        <strong>amor, paz y bendiciones.</strong>
+      </p>
+
+      <span class="wish-stars">✦ ❄ ✦</span>
+    </div>
+
+  </div>
+</div>
+        <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="play-label" id="host-label">Escuchar mensaje</p>
+        <div class="lines" id="host-lines"></div>
+        <audio id="host-audio" preload="metadata"></audio>
+      </div>
+    </section>
+
+
+
+    <!-- ============ Lugar ============ -->
+    <section class="block place reveal">
+      <div class="frame">
+        <h3 class="foil">Los esperamos en</h3>
+        <p class="place-town" data-bind="pueblo">San Andrés Zautla</p>
+        
+
+<p class="place-street" data-bind="calle">
+  Calle Flor de Mayo, número 5
+  <span class="place-reference">
+    (Cañada de San Miguel, referencia: Casa del Adulto Mayor «Pozo Blanco»)
+  </span>
+</p>
+
+
+        
+<div class="seg" role="group" aria-label="Vista del mapa">
+  <button type="button" id="map-sat" aria-pressed="true">
+    Satélite
+  </button>
+  <button type="button" id="map-street" hidden aria-pressed="false">
+    Mapa
+  </button>
+</div>
+
+        <div class="map-wrap">
+          <div id="map" role="img" aria-label="Mapa con la ubicación de la fiesta"></div>
+          <p class="map-fallback" id="map-fallback" hidden>El mapa no se pudo cargar. Usa los botones de abajo para llegar.</p>
+        </div>
+        <p class="coords">Coordenadas: <span data-bind="coords">17.193862, -96.865984</span></p>
+        <div class="btn-row">
+          <a class="btn btn-ghost" id="btn-gmaps" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn-ghost" id="btn-waze" target="_blank" rel="noopener">Abrir en Waze</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Confirmar ============ -->
+    <section class="block rsvp reveal">
+      <img class="rsvp-ornament" src="assets/img/campana.svg" alt="">
+      <h3 class="foil">¿Nos acompañan?</h3>
+      <p class="rsvp-text">Avísanos por WhatsApp para saber que cuentan con ustedes.</p>
+      <a class="btn btn-red" id="btn-rsvp" target="_blank" rel="noopener">Confirmar asistencia</a>
+      <a class="rsvp-call" id="btn-call">o llama al <span data-bind="telefono">56 5517 5932</span></a>
+    </section>
+
+    <footer class="foot">
+      <img src="assets/img/acebo.svg" alt="" class="divider">
+      <p class="foot-text foil">Felices fiestas</p>
+      <p class="foot-sub" data-bind="familia">Fam. Vera Lazaro</p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="assets/js/config/config.js"></script>
+  <script src="assets/js/models/InvitationModel.js"></script>
+  <script src="assets/js/effects/snow.js"></script>
+  <script src="assets/js/effects/music.js"></script>
+  <script src="assets/js/effects/sfx.js"></script>
+  <script src="assets/js/effects/burrito.js"></script>
+  <script src="assets/js/effects/hostaudio.js"></script>
+  <script src="assets/js/views/InvitationView.js"></script>
+  <script src="assets/js/controllers/InvitationController.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+
+<!-- Firma de autor -->
+<footer class="author-signature">
+  <span class="author-label">Diseño y creación</span>
+  <span class="author-name">Jorge Eli Vera Lázaro</span>
+</footer>
+</html>

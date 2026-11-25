@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 330" role="img" aria-label="Niño Dios en su cuna">
+<defs>
+<radialGradient id="glow" cx="50%" cy="42%" r="55%"><stop offset="0" stop-color="#FFEAA8" stop-opacity=".95"/><stop offset="1" stop-color="#FFEAA8" stop-opacity="0"/></radialGradient>
+<linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A56A36"/><stop offset="1" stop-color="#5B3516"/></linearGradient>
+<linearGradient id="straw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6D27A"/><stop offset="1" stop-color="#D49A38"/></linearGradient>
+</defs>
+<circle cx="210" cy="135" r="160" fill="url(#glow)"/>
+<g stroke="#FFD66B" stroke-width="3" stroke-linecap="round" opacity=".7">
+<line x1="210.0" y1="25.0" x2="210.0" y2="-8.0"/>
+<line x1="246.4" y1="32.2" x2="252.9" y2="16.5"/>
+<line x1="277.2" y1="52.8" x2="300.5" y2="29.5"/>
+<line x1="297.8" y1="83.6" x2="313.5" y2="77.1"/>
+<line x1="305.0" y1="120.0" x2="338.0" y2="120.0"/>
+<line x1="297.8" y1="156.4" x2="313.5" y2="162.9"/>
+<line x1="277.2" y1="187.2" x2="300.5" y2="210.5"/>
+<line x1="246.4" y1="207.8" x2="252.9" y2="223.5"/>
+<line x1="210.0" y1="215.0" x2="210.0" y2="248.0"/>
+<line x1="173.6" y1="207.8" x2="167.1" y2="223.5"/>
+<line x1="142.8" y1="187.2" x2="119.5" y2="210.5"/>
+<line x1="122.2" y1="156.4" x2="106.5" y2="162.9"/>
+<line x1="115.0" y1="120.0" x2="82.0" y2="120.0"/>
+<line x1="122.2" y1="83.6" x2="106.5" y2="77.1"/>
+<line x1="142.8" y1="52.8" x2="119.5" y2="29.5"/>
+<line x1="173.6" y1="32.2" x2="167.1" y2="16.5"/>
+</g>
+<path d="M92 240 L66 318 M328 240 L354 318" stroke="#4A2C12" stroke-width="13" stroke-linecap="round"/>
+<path d="M58 208 Q210 188 362 208 L332 276 Q210 298 88 276 Z" fill="url(#wood)"/>
+<path d="M82 232 Q210 250 338 232" stroke="#3E2410" stroke-width="3" fill="none" opacity=".5"/>
+<path d="M70 205 Q210 178 350 205 Q342 232 210 236 Q78 232 70 205Z" fill="url(#straw)"/>
+<g stroke="#B9781E" stroke-width="2.5" stroke-linecap="round" opacity=".8">
+<path d="M90 214 l22 -14"/><path d="M130 222 l26 -18"/><path d="M300 222 l-26 -18"/><path d="M330 214 l-22 -14"/><path d="M110 206 l-12 -10"/><path d="M312 206 l14 -10"/>
+</g>
+<path d="M138 218 Q146 156 210 152 Q274 156 282 218 Q210 238 138 218Z" fill="#FFF6E2"/>
+<path d="M136 214 Q210 240 284 214 L292 244 Q210 270 128 244Z" fill="#3E73BA"/>
+<path d="M150 232 Q210 250 270 232" stroke="#2C5592" stroke-width="3" fill="none" opacity=".7"/>
+<circle cx="210" cy="124" r="52" fill="#FFF6E2"/>
+<circle cx="210" cy="126" r="41" fill="#F4CBA2"/>
+<path d="M192 92 Q210 80 228 92 Q222 100 210 98 Q198 100 192 92Z" fill="#8A5A34"/>
+<path d="M188 128 q8 7 16 0 M216 128 q8 7 16 0" stroke="#5A3520" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+<circle cx="184" cy="140" r="7" fill="#F29A8E" opacity=".6"/><circle cx="236" cy="140" r="7" fill="#F29A8E" opacity=".6"/>
+<path d="M202 145 q8 7 16 0" stroke="#B4574A" stroke-width="3" fill="none" stroke-linecap="round"/>
+<ellipse cx="210" cy="68" rx="56" ry="13" fill="none" stroke="#FFD04D" stroke-width="7"/>
+<ellipse cx="210" cy="66" rx="56" ry="13" fill="none" stroke="#FFF1B8" stroke-width="2" opacity=".8"/>
+<g fill="#FFF1B8">
+<path d="M64 98 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z"/>
+<path d="M352 70 l3 9 9 3 -9 3 -3 9 -3 -9 -9 -3 9 -3z"/>
+<path d="M340 150 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z"/>
+<path d="M82 160 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z"/>
+</g>
+</svg>
